@@ -37,8 +37,11 @@ class block_externalid extends block_base {
         if ($this->content !== null) {
             return $this->content;
         }
-
-        $externalid = profile_user_record($USER->id)->externalid;
+        if (isloggedin() && has_capability('moodle/site:config', context_system::instance())) {
+            $externalid = profile_user_record($USER->id)->externalid;
+        } else {
+            $externalid = 'Only logged in admins can view the External ID';
+        }
 
         $this->content = new stdClass;
         $this->content->text = $externalid;

@@ -26,6 +26,7 @@
  * Perform the post-install procedures.
  */
 function xmldb_block_externalid_install() {
+    global $CFG;
     require_once($CFG->dirroot.'/user/profile/definelib.php');
 
     $description = ["text" => "temp description", "format" => 1];
