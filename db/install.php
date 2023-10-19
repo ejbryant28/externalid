@@ -31,7 +31,7 @@ function xmldb_block_externalid_install() {
     $description = ["text" => "temp description", "format" => 1];
     $newfieldparams = new stdClass;
     $newfieldparams->shortname = 'externalid';
-    $newfieldparams->name= 'External ID';
+    $newfieldparams->name = 'External ID';
     $newfieldparams->datatype = 'text';
     $newfieldparams->description = $description;
     $newfieldparams->categoryid = 2;

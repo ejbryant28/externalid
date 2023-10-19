@@ -21,20 +21,20 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
- class block_externalid extends block_base {
+class block_externalid extends block_base {
 
-    function init() {
+    protected function init() {
         $this->title = get_string('pluginname', 'block_externalid');
     }
 
-    function has_config() {
+    public function has_config() {
         return true;
     }
-    
-    function get_content() {
+
+    public function get_content() {
         global $USER;
 
-        if ($this->content !== NULL) {
+        if ($this->content !== null) {
             return $this->content;
         }
 
