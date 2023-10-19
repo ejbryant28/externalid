@@ -31,33 +31,6 @@
         return true;
     }
     
-    function add_external_id_field() {
-        require_once($CFG->dirroot.'/user/profile/definelib.php');
-
-        $description = ["text" => "temp description", "format" => 1];
-        $newfieldparams = new stdClass;
-        $newfieldparams->shortname = 'externalid';
-        $newfieldparams->name= 'External ID';
-        $newfieldparams->datatype = 'text';
-        $newfieldparams->description = $description;
-        $newfieldparams->categoryid = 2;
-        $newfieldparams->sortorder = 9;
-        $newfieldparams->required = 1;
-        $newfieldparams->locked = 0;
-        $newfieldparams->visible = 1;
-        $newfieldparams->forceunique = 0;
-        $newfieldparams->signup = 0;
-        $newfieldparams->defaultdata = 'ABC123';
-        $newfieldparams->defaultdataformat = 0;
-        $newfieldparams->param1 = 30;
-        $newfieldparams->param2 = 2048;
-        $newfieldparams->param3 = 0;
-
-        profile_save_field($newfieldparams, []);
-
-        return $newfieldparams;
-
-    }
     function get_content() {
         global $USER;
 
