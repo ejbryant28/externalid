@@ -25,7 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'externalid';
+$string['pluginname'] = 'External Id';
 $string['externalid:addinstance'] = 'Add new External ID block';
 $string['externalid:myaddinstance'] = 'Add new External ID block to Dashboard';
-$string['newexternalidblock'] = 'external id';
+$string['newexternalidblock'] = 'External Id';

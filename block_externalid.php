@@ -21,7 +21,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-class block_externalid extends block_base {
+ class block_externalid extends block_base {
 
     function init() {
         $this->title = get_string('pluginname', 'block_externalid');
@@ -30,31 +30,45 @@ class block_externalid extends block_base {
     function has_config() {
         return true;
     }
+    
+    function add_external_id_field() {
+        require_once($CFG->dirroot.'/user/profile/definelib.php');
+
+        $description = ["text" => "temp description", "format" => 1];
+        $newfieldparams = new stdClass;
+        $newfieldparams->shortname = 'externalid';
+        $newfieldparams->name= 'External ID';
+        $newfieldparams->datatype = 'text';
+        $newfieldparams->description = $description;
+        $newfieldparams->categoryid = 2;
+        $newfieldparams->sortorder = 9;
+        $newfieldparams->required = 1;
+        $newfieldparams->locked = 0;
+        $newfieldparams->visible = 1;
+        $newfieldparams->forceunique = 0;
+        $newfieldparams->signup = 0;
+        $newfieldparams->defaultdata = 'ABC123';
+        $newfieldparams->defaultdataformat = 0;
+        $newfieldparams->param1 = 30;
+        $newfieldparams->param2 = 2048;
+        $newfieldparams->param3 = 0;
+
+        profile_save_field($newfieldparams, []);
+
+        return $newfieldparams;
+
+    }
     function get_content() {
-        global $DB;
+        global $USER;
 
         if ($this->content !== NULL) {
             return $this->content;
         }
 
-        $content = '';
-
-        $showcourses = get_config('block_externalid', 'showcourses');
-
-        if ($showcourses) {
-            $courses = $DB->get_records('course');
-            foreach ($courses as $course) {
-                $content .= $course->fullname . '<br>';
-            }
-        } else {
-            $users = $DB->get_records('user');
-            foreach ($users as $user) {
-                $content .= $user->firstname . ' ' . $user->lastname . '<br>';
-            }
-        }
+        $externalid = profile_user_record($USER->id)->externalid;
 
         $this->content = new stdClass;
-        $this->content->text = 'Hello, World';
+        $this->content->text = $externalid;
         $this->content->footer = 'Goodbye, World';
         return $this->content;
     }
