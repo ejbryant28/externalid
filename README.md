@@ -1,8 +1,6 @@
 # externalid #
 
-TODO Describe the plugin shortly here.
-
-TODO Provide more detailed description here.
+Block plugin that shows the value of a user's custom profile field called "external_id". If the field doesn't exist when the plugin is installed, it should be created for all existing users and populated with the value 'ABC123'
 
 ## Installing via uploaded ZIP file ##
 
@@ -29,7 +27,7 @@ to complete the installation from the command line.
 
 ## License ##
 
-2023 EJ <ej@moodletest.com>
+2023 EJ <ejbryant28@gmail.com>
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
