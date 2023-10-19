@@ -42,7 +42,6 @@ class block_externalid extends block_base {
 
         $this->content = new stdClass;
         $this->content->text = $externalid;
-        $this->content->footer = 'Goodbye, World';
         return $this->content;
     }
 }
